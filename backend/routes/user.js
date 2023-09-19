@@ -1,10 +1,9 @@
 const router = require("express").Router()
-const User = require("../model/User")
-const Post = require("../model/Post")
+const User = require("../models/user.js")
+const Post = require("../models/post.js")
 const bcrypt = require("bcrypt")
 
 // update
-
 router.put("/:id", async (req, res) => {
   if (req.body.userId === req.params.id) {
     if (req.body.password) {

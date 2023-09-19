@@ -11,46 +11,52 @@ const userRoute = require('./routes/user');
 const postRoute = require('./routes/posts');
 const categoryRoute = require('./routes/categories');
 
-//loads the environment variables from the .env file into process.env.
+// Load environment variables from the .env file into process.env
 dotenv.config();
 
-// recognize the incoming Request Object as a JSON Object.
+// Recognize the incoming Request Object as a JSON Object
 app.use(express.json());
 
-// serve static files
+// Serve static files
 app.use("/images", express.static(path.join(__dirname, "/images")));
 
-// connect to MongoDB
+// Connect to MongoDB
 mongoose
     .connect(process.env.MONGO_URL, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
-        useCreateIndex: true,
+        /*useCreateIndex: true,*/
     })
-    .then(console.log("Connected to MongoDB"))
-    .catch((err) => console.log(err));
-
-    const storage = multer.diskStorage({
-        destination: (req, file, cb) => {
-            cb(null, "images");
-        },
-        filename: (req, file, cb) => {
-            cb(null, req.body.name);
-        }
+    .then(() => {
+        console.log("Connected to MongoDB");
+    })
+    .catch((err) => {
+        console.error("Error connecting to MongoDB:", err);
     });
 
-    const upload = multer({ storage: storage });
-    app.post("/api/upload", upload.single("file"), (req, res) => {
-        res.status(200).json("File has been uploaded");
-    })
+// Multer
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, "images");
+    },
+    filename: (req, file, cb) => {
+        cb(null, req.body.name);
+    }
+});
 
-// routes
+const upload = multer({ storage: storage });
+app.post("/api/upload", upload.single("file"), (req, res) => {
+    res.status(200).json("File has been uploaded");
+});
+
+// Routes
 app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
 app.use("/api/posts", postRoute);
 app.use("/api/categories", categoryRoute);
 
-// listen to port 5000
-app.listen("5000", () => {
-    console.log("Backend is running.");
-})
+// Listen on port 5000
+const PORT = process.env.PORT || 5000; // Use the PORT from environment variables, or default to 5000
+app.listen(PORT, () => {
+    console.log(`Backend is running on port ${PORT}`);
+});
