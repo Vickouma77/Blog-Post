@@ -7,7 +7,7 @@ const multer = require('multer');
 const path = require('path');
 
 const authRoute = require('./routes/auth');
-const userRoute = require('./routes/users');
+const userRoute = require('./routes/user');
 const postRoute = require('./routes/posts');
 const categoryRoute = require('./routes/categories');
 
