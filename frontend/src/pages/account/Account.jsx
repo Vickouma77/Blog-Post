@@ -15,6 +15,7 @@ export const Account = () => {
   const [succ, setSucc] = useState(false)
   const PublicFlo = "http://localhost:5000/images/"
 
+  // handleSubmit
   const handleSubmit = async (e) => {
     e.preventDefault()
     dispatch({ type: "UPDATE_START" })
