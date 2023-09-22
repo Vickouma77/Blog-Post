@@ -21,3 +21,19 @@ The frontend is built using ```React```. The frontend is responsible for display
 6. Run ```npm install``` to install the dependencies
 7. Run ```npm start``` to start the frontend server
 8. Open the browser and navigate to http://localhost:3000/
+
+## Screenshots
+
+
+## Future Improvements
+1. Add authentication
+2. Add comments
+3. Add likes
+4. Add categories
+5. Add search functionality
+6. Add pagination
+7. Add tags
+8. Add share functionality
+
+## Resources
+
