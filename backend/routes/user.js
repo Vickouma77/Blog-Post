@@ -29,9 +29,9 @@ router.put("/:id", async (req, res) => {
 /* 
 {
     "userId" : "6332700aeda4d5e6fda5628a",
-    "username":"sunil",
-    "email": "sunil@gmail.com",
-    "password":"sunil"
+    "username":"Vick",
+    "email": "vick@gmail.com",
+    "password":"vick1234"
 }
  */
 
@@ -59,8 +59,8 @@ router.delete("/:id", async (req, res) => {
 /* 
  {
     "userId" : "633277ed7e57ec2eb50f9f18",
-    "username":"sunil",
-    "password":"sunil"
+    "username":"vick",
+    "password":"vick1234"
  } */
 
 // get   user
