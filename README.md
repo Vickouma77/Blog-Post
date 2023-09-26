@@ -22,9 +22,6 @@ The frontend is built using ```React```. The frontend is responsible for display
 7. Run ```npm start``` to start the frontend server
 8. Open the browser and navigate to http://localhost:3000/
 
-## Screenshots
-
-
 ## Future Improvements
 1. Add authentication
 2. Add comments
@@ -36,4 +33,3 @@ The frontend is built using ```React```. The frontend is responsible for display
 8. Add share functionality
 
 ## Resources
-
