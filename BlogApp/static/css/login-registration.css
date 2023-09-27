@@ -57,6 +57,13 @@ button {
 	transition: transform 80ms ease-in;
 }
 
+button:hover {
+    background-color: #fff;
+    color: #000000;
+    border-color: #FF4B2B;
+    transform: scale(1.1);
+}
+
 button:active {
 	transform: scale(0.95);
 }
@@ -224,6 +231,10 @@ input {
 	margin: 0 5px;
 	height: 40px;
 	width: 40px;
+}
+
+.social-container a:hover {
+    background-color: #ff1010;
 }
 
 footer {
