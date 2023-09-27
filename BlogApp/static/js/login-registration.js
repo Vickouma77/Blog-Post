@@ -36,6 +36,7 @@ signUpForm.addEventListener('submit', async (e) => {
         }
     } catch (err) {
         console.error('Error:', err);
+        alert('Failed to sign up');
     }
 });
 
@@ -64,5 +65,6 @@ signInForm.addEventListener('submit', async (e) => {
         }
     } catch (err) {
         console.error('Error:', err);
+        alert('Failed to login');
     }
 });
