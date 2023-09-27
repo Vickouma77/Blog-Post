@@ -16,7 +16,7 @@ signUpForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     // Get user info
-    const name = signUpForm.querySelector('input[type="text"]').value;
+    const name = signUpForm.querySelector('input[type="username"]').value;
     const email = signUpForm.querySelector('input[type="email"]').value;
     const password = signUpForm.querySelector('input[type="password"]').value;
 
