@@ -40,7 +40,7 @@ router.post('/login', async (req, res) => {
 
         // if password is invalid
         if (!validPassword) {
-            return res.status(400).json("Wrong credentials!") // Added 'return' here
+            return res.status(400).json("Invalid password!") // Added 'return' here
         }
 
         // if password is valid
