@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
+const cors = require('cors');
 
 const multer = require('multer');
 const path = require('path');
@@ -13,6 +14,9 @@ const categoryRoute = require('./routes/categories');
 
 // Load environment variables from the .env file into process.env
 dotenv.config();
+
+// Enable CORS
+app.use(cors());
 
 // Recognize the incoming Request Object as a JSON Object
 app.use(express.json());
