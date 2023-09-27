@@ -16,7 +16,7 @@ signUpForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     // Get user info
-    const name = signUpForm.querySelector('input[type="username"]').value;
+    const name = signUpForm.querySelector('input[name="username"]').value;
     const email = signUpForm.querySelector('input[type="email"]').value;
     const password = signUpForm.querySelector('input[type="password"]').value;
 
@@ -65,6 +65,6 @@ signInForm.addEventListener('submit', async (e) => {
         }
     } catch (err) {
         console.error('Error:', err);
-        alert('Failed to login');
+        alert('Error logging in');
     }
 });
