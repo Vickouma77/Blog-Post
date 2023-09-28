@@ -1,70 +1,49 @@
-const signUpButton = document.getElementById('signUp');
-const signInButton = document.getElementById('signIn');
-const container = document.getElementById('container');
+import axios from 'axios';
 
-signUpButton.addEventListener('click', () => {
-	container.classList.add("right-panel-active");
+// Function to handle registration
+function handleRegistration() {
+  const name = document.querySelector('.sign-up-container input[name="name"]').value;
+  const email = document.querySelector('.sign-up-container input[name="email"]').value;
+  const password = document.querySelector('.sign-up-container input[name="password"]').value;
+
+  axios.post('http://localhost:5000/api/auth/register', {
+    name,
+    email,
+    password,
+  })
+    .then(response => {
+      console.log('Registration Successful:', response.data);
+    })
+    .catch(error => {
+      console.error('Registration Error:', error);
+    });
+}
+
+// Function to handle login
+function handleLogin() {
+  const loginEmail = document.querySelector('.sign-in-container input[name="email"]').value;
+  const loginPassword = document.querySelector('.sign-in-container input[name="password"]').value;
+
+  axios.post('http://localhost:5000/api/auth/login', {
+    email: loginEmail,
+    password: loginPassword,
+  })
+    .then(response => {
+        alert('Login Successful');
+        console.log('Login Successful:', response.data);
+    })
+    .catch(error => {
+        alert('Login Failed');
+        console.error('Login Error:', error);
+    });
+}
+
+document.querySelector('.sign-up-container button').addEventListener('click', function(event) {
+    event.preventDefault();
+    handleRegistration();
 });
 
-signInButton.addEventListener('click', () => {
-	container.classList.remove("right-panel-active");
-});
-
-// Register a user
-const signUpForm = document.querySelector('.sign-up-container form');
-signUpForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    // Get user info
-    const name = signUpForm.querySelector('input[name="username"]').value;
-    const email = signUpForm.querySelector('input[type="email"]').value;
-    const password = signUpForm.querySelector('input[type="password"]').value;
-
-    try {
-        const response = await fetch('http://localhost:5000/api/auth/register', {
-            method: 'POST',
-            body: JSON.stringify({ name, email, password }),
-            headers: { 'Content-Type': 'application/json' },
-        });
-
-        if (response.ok) {
-            window.location = '../home-page.html';
-            alert('Sign up successful');
-        } else {
-            const data = await response.json(); // Get error message from the server
-            alert(`Failed to sign up: ${data.message}`);
-        }
-    } catch (err) {
-        console.error('Error:', err);
-        alert('Failed to sign up');
-    }
-});
-
-// Login a user
-const signInForm = document.querySelector('.sign-in-container form');
-signInForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    // Get user info
-    const email = signInForm.querySelector('input[type="email"]').value;
-    const password = signInForm.querySelector('input[type="password"]').value;
-
-    try {
-        const response = await fetch('http://localhost:5000/api/auth/login', {
-            method: 'POST',
-            body: JSON.stringify({ email, password }),
-            headers: { 'Content-Type': 'application/json' },
-        });
-
-        if (response.ok) {
-            window.location = '../home-page.html'; // Redirect to the dashboard
-            alert('Login successful');
-        } else {
-            const data = await response.json(); // Get error message from the server
-            alert(`Failed to login: ${data.message}`);
-        }
-    } catch (err) {
-        console.error('Error:', err);
-        alert('Error logging in');
-    }
+document.querySelector('.sign-in-container button').addEventListener('click', function(event) {
+    event.preventDefault();
+    handleLogin();
 });
