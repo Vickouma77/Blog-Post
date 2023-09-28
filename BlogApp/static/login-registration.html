@@ -10,7 +10,7 @@
     <body>
         <div class="container" id="container">
             <div class="form-container sign-up-container">
-                <form action="./home-page.html">
+                <form action="http://localhost:5000/api/auth/register">
                     <h1>Create Account</h1>
                     <div class="social-container">
                         <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
@@ -26,7 +26,7 @@
             </div>
 
             <div class="form-container sign-in-container">
-                <form action="./home-page.html">
+                <form action="http://localhost:5000/api/auth/login">
                     <h1>Sign in</h1>
                     <div class="social-container">
                         <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
@@ -63,6 +63,27 @@
                 <a target="_blank" href="#">Vick Prestone</a>
             </p>
         </footer>
+        <!--DOM related script-->
+        <script>
+            const signUpButton = document.getElementById('signUp');
+            const signInButton = document.getElementById('signIn');
+            const container = document.getElementById('container');
+
+            signUpButton.addEventListener('click', () => {
+                container.classList.add("right-panel-active");
+            });
+
+            signInButton.addEventListener('click', () => {
+                container.classList.remove("right-panel-active");
+            });
+
+        </script>
+        
+        <!--Including axios-->
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+        <!--Including login-registration.js-->
         <script src="./js/login-registration.js"></script>
+
     </body>
 </html>
