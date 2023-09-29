@@ -15,16 +15,20 @@ const categoryRoute = require('./routes/categories');
 // Load environment variables from the .env file into process.env
 dotenv.config();
 
-// Enable CORS
-app.use(cors());
+const corsOptions = {
+    origin: 'http://localhost:5500',
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    optionsSuccessStatus: 204,
+};
 
-// Recognize the incoming Request Object as a JSON Object
+app.use(cors(corsOptions));
+
 app.use(express.json());
 
 // Serve static files
 app.use("/images", express.static(path.join(__dirname, "/images")));
 
-// Connect to MongoDB
+/*Connect to MongoDB */
 mongoose
     .connect(process.env.MONGO_URL, {
         useNewUrlParser: true,
