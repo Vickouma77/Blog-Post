@@ -1,58 +1,56 @@
-const axios = require('axios');
-const FormData = require('form-data');
+import axios from 'axios';
 
-/* Function to handle registration */
 async function handleRegistration() {
     try {
-        
-        const name = document.querySelector('.sign-up-container input[name="name"]').value;
-        const email = document.querySelector('.sign-up-container input[name="email"]').value;
-        const password = document.querySelector('.sign-up-container input[name="password"]').value;
+        const name = document.querySelector('.sign-up-container input[name="signup-name"]').value;
+        const email = document.querySelector('.sign-up-container input[name="signup-email"]').value;
+        const password = document.querySelector('.sign-up-container input[name="signup-password"]').value;
 
-
-        const form = new FormData();
-        form.append('name', name);
-        form.append('email', email);
-        form.append('password', password);
-
-        const response = await axios.post('http://localhost:5000/api/auth/register', form, {
-            headers: {
-                ...form.getHeaders(),
-            },
-        });
-
-        if (response.data.status === 'success') {
-            window.location.href = '/login';
-        } else {
-            alert(response.data.message);
-        }
-    } catch (error) {
-        console.error('Registration Error:', error);
-    }
-}
-
-/*Function to handle login */
-async function handleLogin() {
-    try {
-
-        const email = document.querySelector('.login-container input[name="email"]').value;
-        const password = document.querySelector('.login-container input[name="password"]').value;
-
-        const response = await axios.post('http://localhost:5000/api/auth/login', {
+        const response = await axios.post('http://localhost:5000/api/auth/register', {
+            name,
             email,
             password,
         });
 
-        if (response.data.status === 'success') {
-            window.location.href = '/';
+        if (response.status === 200) {
+            window.location.href = '/login';
         } else {
-            alert(response.data.message);
+            alert('Registration failed. Please try again.');
         }
     } catch (error) {
-        console.error('Login Error:', error);
+        console.error('Registration Error:', error);
+        alert('Registration failed. Please try again.');
     }
 }
 
-/* Event Listeners */
-document.querySelector('.sign-up-container button').addEventListener('click', handleRegistration);
-document.querySelector('.login-container button').addEventListener('click', handleLogin);
+async function handleLogin() {
+    try {
+        const username = document.querySelector('.login-container input[name="signin-name"]').value;
+        const password = document.querySelector('.login-container input[name="signin-password"]').value;
+
+        const response = await axios.post('http://localhost:5000/api/auth/login', {
+            username,
+            password,
+        });
+
+        if (response.status === 200) {
+            window.location.href = '/';
+        } else {
+            alert('Login failed. Please check your credentials and try again.');
+        }
+    } catch (error) {
+        console.error('Login Error:', error);
+        alert('Login failed. Please check your credentials and try again.');
+    }
+}
+
+// Event Listeners
+document.querySelector('.sign-up-container button').addEventListener('click', function (event) {
+    event.preventDefault();
+    handleRegistration();
+});
+
+document.querySelector('.login-container button').addEventListener('click', function (event) {
+    event.preventDefault();
+    handleLogin();
+});
