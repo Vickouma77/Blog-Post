@@ -84,7 +84,7 @@ function SearchBar() {
                 className="dataItem"
                 href={value.link}
                 target="_blank"
-                rel="noneferrer"
+                rel="noreferrer"
                 key={value._id}
                 onClick={() => handleOnClick(value._id)}
               >
