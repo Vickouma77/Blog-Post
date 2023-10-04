@@ -8,28 +8,24 @@ function Blog() {
   const [body, setBody] = useState();
   const { id } = useParams();
 
-
-
-  const getBlogData = async () => {
-    // console.log(id);
-    const res = await fetch(`http://localhost:8999/getdata/${id}`, {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    if (res.ok) {
-      const { id, title, body } = await res.json();
-      // console.log(myBlogs);
-      // console.log("myblogs "+myBlogs);
-      setBody(body);
-      setMyId(id);
-      setTitle(title);
-    }
-  };
-
   useEffect(() => {
-    getBlogData();
-  }, []);
+    const getBlogData = async () => {
+      const res = await fetch(`http://localhost:8999/getdata/${id}`, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      if (res.ok) {
+        const { id, title, body } = await res.json();
+        setBody(body);
+        setMyId(id);
+        setTitle(title);
+      }
+    };
+
+    getBlogData(); 
+
+  }, [id]); 
 
   return (
     <div key={myId} className="specific-blog">
