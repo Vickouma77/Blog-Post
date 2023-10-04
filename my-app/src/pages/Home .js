@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+//import React, { useEffect } from "react";
 import Navbar from "../components/Navbar";
 import "../css/home.css";
 import img2 from "../images/write.png";
@@ -26,9 +26,12 @@ function Home() {
     }
   }
 
-  useEffect(() => {
+  fetchUser();
+
+
+  /*useEffect(() => {
     fetchUser();
-  }, []);
+  }, [fetchUser]); */
 
   // console.log(firstName);
 
