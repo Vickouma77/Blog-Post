@@ -20,12 +20,17 @@
 .logo a {
   font-size: 38px;
   text-decoration: none;
-  color: #FF9E9E;
+  color: #000000;
   padding: 1.3rem;
   font-weight: 700;
   font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   text-shadow: 0px 3px 0px #b2a98f, 0px 14px 10px rgba(0, 0, 0, 0.15);
   /* text */
+}
+
+.logo a:hover {
+  color: #FF9E9E;
+  transition: all ease-in-out 200ms;
 }
 
 .links {

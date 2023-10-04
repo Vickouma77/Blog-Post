@@ -45,7 +45,8 @@ function Home() {
         <div className="slogan">
           <h1>Stay curious</h1>
           <h3>
-            Discover stories, thinking, and expertise from writers on any topic.
+            Write and read anything you want. Share your stories with the
+            world.
           </h3>
           <Link to="/write">Start writing</Link>
         </div>
@@ -53,9 +54,10 @@ function Home() {
       <section className="section">
         <img src={img} alt="" />
         <div>
-          <p>“Never trust anyone who has not brought a book with them.”</p>
           <p>
-            <strong>― Lemony Snicket, Horseradish</strong>
+              "The man who does not read has no advantage over the man who cannot read." </p>
+          <p>
+            <strong>― Mark Twain</strong>
           </p>
           <Link to="/blogs">Start Reading</Link>
         </div>
