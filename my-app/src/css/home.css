@@ -339,3 +339,12 @@
 .footer >div  > div > a:hover {
     color: #FF9E9E;
 }
+
+.social-media-icons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+}
