@@ -1,8 +1,18 @@
 import mongoose from "mongoose";
+import dotenv from "dotenv";
 
-const connect = async() => {
-    await mongoose.connect('mongodb+srv://blog-react:9dQ4sSR3Ino8taXs@cluster0.kqfao1o.mongodb.net/?retryWrites=true&w=majority');
-    console.log('server is connected to the database...');
+dotenv.config();
+
+const connect = async () => {
+    try {
+        await mongoose.connect(process.env.MONGO_URL, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+        });
+        console.log("Database connected successfully...");
+    } catch (error) {
+        console.log(error.message);
+    }
 }
 
 export default connect;
