@@ -7,11 +7,9 @@ The goal of this project is to build a blog post using ```nodeJS```, ```express`
 2. Frontend
 
 ## Backend
-The backend is built using ```nodeJS```, ```express``` and ```mongodb```. The backend is responsible for creating, reading, updating and deleting posts. The backend is hosted on heroku. The backend is hosted on the following url: https://blog-post-backend.herokuapp.com/
-
+The backend is built using ```nodeJS```, ```express``` and ```mongodb```. The backend is responsible for creating, reading, updating and deleting posts.
 ## Frontend
-The frontend is built using ```React```. The frontend is responsible for displaying the posts and allowing users to create, read, update and delete posts. The frontend is hosted on netlify. The frontend is hosted on the following url: https://blog-post-frontend.netlify.app/
-
+The frontend is built using ```React```. The frontend is responsible for displaying the posts and allowing users to create, read, update and delete posts.
 ## How to run the project
 1. Clone the repository
 2. Navigate to the backend folder
